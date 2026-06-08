@@ -7,7 +7,7 @@ export const site = {
   company: "UrbanWhizz",
   product: "WhizzHR",
   domain: "https://www.urbanwhizz.com",
-  email: "hello@urbanwhizz.com",
+  email: "info@urbanwhizz.com",
   phone: "+91 00000 00000",
   location: "India",
   tagline: "Software that runs the everyday work of your business.",
