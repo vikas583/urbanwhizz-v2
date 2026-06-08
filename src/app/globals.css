@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   UrbanWhizz design system — modern corporate
+   Deep navy ink, refined blue/indigo accent, generous whitespace.
+---------------------------------------------------------------------------- */
+
+@theme {
+  --color-ink: #0b1220;
+  --color-ink-soft: #1a2438;
+  --color-navy: #0f2147;
+
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe6ff;
+  --color-brand-200: #bdd0ff;
+  --color-brand-300: #91b1ff;
+  --color-brand-400: #5d85fb;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+
+  --color-accent-400: #34d4c4;
+  --color-accent-500: #06b6d4;
+
+  --color-paper: #ffffff;
+  --color-paper-soft: #f8fafc;
+  --color-paper-muted: #f1f5f9;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --shadow-soft: 0 1px 2px rgba(15, 33, 71, 0.04),
+    0 8px 24px -12px rgba(15, 33, 71, 0.12);
+  --shadow-lift: 0 1px 3px rgba(15, 33, 71, 0.06),
+    0 20px 48px -20px rgba(15, 33, 71, 0.22);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b1220;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings: tighter tracking for an editorial, corporate feel */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Subtle, decorative background grid used behind hero / CTA bands */
+.bg-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(15, 33, 71, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(15, 33, 71, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-radial-fade {
+  background: radial-gradient(
+    60% 60% at 50% 0%,
+    rgba(37, 99, 235, 0.1) 0%,
+    rgba(37, 99, 235, 0) 70%
+  );
+}
+
+/* Scroll-reveal animation (driven by IntersectionObserver in <Reveal/>) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Slow marquee for the trust strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }

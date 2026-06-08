@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UrbanWhizz — Company Website
 
-## Getting Started
+Marketing site for **UrbanWhizz**, a product-and-services software company.
 
-First, run the development server:
+- **Product:** WhizzHR — attendance & leave management platform
+- **Services:** custom software (billing systems, web apps, internal tools, integrations)
+
+Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript** and **Tailwind CSS v4**.
+Every page is statically prerendered — fast, cheap to host, and SEO-friendly.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # first time only
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx          # global metadata, JSON-LD, header + footer
+    page.tsx            # home page
+    whizzhr/page.tsx    # product page (+ FAQ, SoftwareApplication schema)
+    services/page.tsx   # services page
+    about/page.tsx      # about page
+    contact/page.tsx    # contact page (+ form)
+    sitemap.ts          # /sitemap.xml
+    robots.ts           # /robots.txt
+    globals.css         # design tokens (colors, shadows, animations)
+  components/            # header, footer, logo, icons, cards, hero visual…
+  lib/site.ts           # ← single source of company / product facts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customising
 
-## Learn More
+Most content lives in plain arrays at the top of each page file. Start here:
 
-To learn more about Next.js, take a look at the following resources:
+1. **`src/lib/site.ts`** — update these placeholders before launch:
+   - `domain` → your real domain (used for canonical URLs, sitemap, Open Graph)
+   - `email`, `phone`, `location`
+   - `social.linkedin`, `social.twitter`
+2. **Colours / fonts** — `src/app/globals.css` (`@theme` block).
+3. **Navigation** — the `nav` array in `src/lib/site.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO — already built in
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Per-page `<title>`, meta description and canonical URLs
+- Open Graph + Twitter card metadata
+- `sitemap.xml` and `robots.txt` generated automatically
+- JSON-LD structured data (`Organization` + `SoftwareApplication`) for rich results
+- Semantic headings, fast static pages, accessible markup
 
-## Deploy on Vercel
+### Before you launch (SEO/marketing checklist)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Set the real `domain` in `src/lib/site.ts`
+- [ ] Add an Open Graph image at `src/app/opengraph-image.png` (1200×630) — Next.js picks it up automatically
+- [ ] Verify the site in [Google Search Console](https://search.google.com/search-console) and submit `sitemap.xml`
+- [ ] Add Google Analytics / a privacy-friendly analytics tag
+- [ ] Create a Google Business Profile for local SEO
+- [ ] Target keywords already wired into metadata: *attendance management software*, *leave management system*, *custom software development*, *billing software development*
+- [ ] Consider adding a `/blog` later — regular content is the biggest lever for ranking
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying (recommended: Vercel)
+
+1. Push this repo to GitHub.
+2. Import it at [vercel.com/new](https://vercel.com/new) — zero config, free tier works.
+3. Add your custom domain in the Vercel dashboard.
+
+Any Node host works too (`npm run build && npm run start`).
+
+## Contact form
+
+The contact form currently opens the visitor's email client with a prefilled
+message (no backend needed). To capture submissions instead, wire the form in
+`src/components/contact-form.tsx` to a service like Formspree, Resend, or a
+Next.js route handler.
