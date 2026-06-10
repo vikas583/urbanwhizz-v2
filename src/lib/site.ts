@@ -12,7 +12,7 @@ export const site = {
   location: "India",
   tagline: "Software that runs the everyday work of your business.",
   description:
-    "UrbanWhizz builds WhizzHR — a modern attendance & leave management platform — and designs custom software, from billing systems to internal tools, for growing teams.",
+    "UrbanWhizz designs and builds custom web apps, software and workflow automations for growing businesses — from internal tools and dashboards to billing systems and integrations, built around how you work.",
   social: {
     linkedin: "https://www.linkedin.com/company/urbanwhizz",
     twitter: "https://twitter.com/urbanwhizz",

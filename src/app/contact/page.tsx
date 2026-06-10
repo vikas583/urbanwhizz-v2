@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact UrbanWhizz",
   description:
-    "Get in touch with UrbanWhizz. Book a WhizzHR demo or discuss a custom software project — billing systems, web apps, internal tools and more.",
+    "Get in touch with UrbanWhizz to discuss a web app, custom software or automation project — internal tools, dashboards, integrations and billing systems.",
   alternates: { canonical: "/contact" },
 };
 

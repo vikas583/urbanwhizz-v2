@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
 
 const geistSans = Geist({
@@ -20,20 +21,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: `${site.company} — Attendance, Leave & Custom Software`,
+    default: `${site.company} — Web Apps, Custom Software & Automation`,
     template: `%s · ${site.company}`,
   },
   description: site.description,
   keywords: [
-    "attendance management software",
-    "leave management system",
-    "employee attendance system",
-    "HR management software",
-    "WhizzHR",
     "custom software development",
-    "billing software development",
+    "web application development",
+    "app development",
+    "workflow automation",
+    "business process automation",
     "internal tools development",
+    "custom web apps",
+    "billing software development",
+    "API integrations",
     "UrbanWhizz",
+    "WhizzHR",
   ],
   applicationName: site.company,
   authors: [{ name: site.company }],
@@ -45,12 +48,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.domain,
     siteName: site.company,
-    title: `${site.company} — Attendance, Leave & Custom Software`,
+    title: `${site.company} — Web Apps, Custom Software & Automation`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.company} — Attendance, Leave & Custom Software`,
+    title: `${site.company} — Web Apps, Custom Software & Automation`,
     description: site.description,
   },
   robots: {
@@ -72,12 +75,19 @@ const orgJsonLd = {
     {
       "@type": "Offer",
       itemOffered: {
-        "@type": "SoftwareApplication",
-        name: site.product,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
+        "@type": "Service",
+        name: "Web & application development",
         description:
-          "Attendance and leave management platform for growing teams.",
+          "Custom web apps, portals, dashboards and internal tools built around your workflow.",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Workflow automation & integrations",
+        description:
+          "Business process automation and API integrations that connect the tools you already use.",
       },
     },
     {
@@ -87,6 +97,17 @@ const orgJsonLd = {
         name: "Custom software development",
         description:
           "Bespoke software including billing systems, internal tools and integrations.",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "SoftwareApplication",
+        name: site.product,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description:
+          "Attendance and leave management platform for growing teams.",
       },
     },
   ],
@@ -108,6 +129,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

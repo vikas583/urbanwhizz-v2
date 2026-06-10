@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About UrbanWhizz",
   description:
-    "UrbanWhizz is a product-and-services software company. We build WhizzHR for attendance and leave, and develop custom software for growing businesses.",
+    "UrbanWhizz is a software studio building custom web apps, software and workflow automations for growing businesses — from internal tools and dashboards to billing systems and integrations.",
   alternates: { canonical: "/about" },
 };
 

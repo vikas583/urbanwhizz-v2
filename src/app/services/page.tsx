@@ -5,14 +5,14 @@ import { Icon } from "@/components/icons";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Custom Software Development Services",
+  title: "Web Development, App Building & Automation Services",
   description:
-    "UrbanWhizz builds custom software — billing and invoicing systems, web applications, internal dashboards and integrations — designed around your business workflow.",
+    "UrbanWhizz builds custom web apps, software and workflow automations — web applications, internal dashboards, integrations and billing systems — designed around your business workflow.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Custom Software Development Services · UrbanWhizz",
+    title: "Web Development, App Building & Automation · UrbanWhizz",
     description:
-      "Billing software, custom web apps, internal tools and integrations built around your workflow.",
+      "Custom web apps, internal tools, workflow automation, integrations and billing software built around your workflow.",
     url: `${site.domain}/services`,
   },
 };
